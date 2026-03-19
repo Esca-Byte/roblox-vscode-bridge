@@ -50,7 +50,7 @@ Roblox Studio's built-in script editor lacks the power of a real code editor. Th
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/YOUR_USERNAME/roblox-vscode-bridge.git
+git clone https://github.com/Esca-Byte/roblox-vscode-bridge.git
 cd roblox-vscode-bridge
 
 # 2. Run the installer (copies plugin + installs VS Code extension)
