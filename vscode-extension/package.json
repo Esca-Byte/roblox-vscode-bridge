@@ -1,0 +1,144 @@
+{
+  "name": "roblox-bridge",
+  "displayName": "Roblox Bridge",
+  "description": "Sync Lua/Luau files between VS Code and Roblox Studio in real-time",
+  "version": "1.3.0",
+  "publisher": "roblox-bridge",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "robloxBridge.start",
+        "title": "Roblox Bridge: Start Server",
+        "icon": "$(broadcast)"
+      },
+      {
+        "command": "robloxBridge.stop",
+        "title": "Roblox Bridge: Stop Server",
+        "icon": "$(debug-stop)"
+      },
+      {
+        "command": "robloxBridge.rescan",
+        "title": "Roblox Bridge: Rescan Workspace Files",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "robloxBridge.showStatus",
+        "title": "Roblox Bridge: Show Connection Status",
+        "icon": "$(info)"
+      },
+      {
+        "command": "robloxBridge.newScript",
+        "title": "Roblox Bridge: New Script",
+        "icon": "$(new-file)"
+      },
+      {
+        "command": "robloxBridge.showOutput",
+        "title": "Roblox Bridge: Show Output Log",
+        "icon": "$(output)"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "robloxBridge",
+          "title": "Roblox Bridge",
+          "icon": "$(broadcast)"
+        }
+      ]
+    },
+    "views": {
+      "robloxBridge": [
+        {
+          "id": "robloxBridgeExplorer",
+          "name": "Scripts",
+          "contextualTitle": "Roblox Bridge"
+        }
+      ]
+    },
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "robloxBridge.newScript",
+          "group": "navigation@99",
+          "when": "explorerResourceIsFolder"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "robloxBridge.rescan",
+          "when": "view == robloxBridgeExplorer",
+          "group": "navigation"
+        },
+        {
+          "command": "robloxBridge.showOutput",
+          "when": "view == robloxBridgeExplorer",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Roblox Bridge",
+      "properties": {
+        "robloxBridge.port": {
+          "type": "number",
+          "default": 7777,
+          "description": "Port the bridge HTTP server listens on (must match plugin CONFIG.port)"
+        },
+        "robloxBridge.sourcePath": {
+          "type": "string",
+          "default": "src",
+          "description": "Folder inside the workspace to watch for .lua/.luau files"
+        },
+        "robloxBridge.autoStart": {
+          "type": "boolean",
+          "default": false,
+          "description": "Automatically start the bridge server when a workspace is opened"
+        },
+        "robloxBridge.pollInterval": {
+          "type": "number",
+          "default": 2,
+          "minimum": 1,
+          "description": "How often (in seconds) Roblox Studio polls for changes."
+        },
+        "robloxBridge.preferLuau": {
+          "type": "boolean",
+          "default": false,
+          "description": "Write .luau extensions instead of .lua when importing scripts from Studio."
+        },
+        "robloxBridge.showConnectionNotifications": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show a notification when Roblox Studio connects or disconnects."
+        },
+        "robloxBridge.showSyncNotifications": {
+          "type": "boolean",
+          "default": false,
+          "description": "Show a notification when Studio pulls changes or completes an export."
+        },
+        "robloxBridge.heartbeatTimeoutSeconds": {
+          "type": "number",
+          "default": 15,
+          "minimum": 5,
+          "description": "Seconds without a heartbeat before Studio is considered disconnected."
+        },
+        "robloxBridge.autoExportOnConnect": {
+          "type": "boolean",
+          "default": false,
+          "description": "Automatically rescan and prepare all workspace files when Studio first connects."
+        },
+        "robloxBridge.twoWayDelete": {
+          "type": "boolean",
+          "default": false,
+          "description": "Allow Studio to delete files on disk when scripts are removed. Disabled by default for safety."
+        }
+      }
+    }
+  }
+}

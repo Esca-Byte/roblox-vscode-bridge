@@ -1,0 +1,36 @@
+# ─── Node / VS Code Extension ───────────────────
+node_modules/
+*.vsix
+vscode-extension/node_modules/
+vscode-extension/*.vsix
+vscode-extension/out/
+vscode-extension/dist/
+
+# ─── OS files ───────────────────────────────────
+Thumbs.db
+Desktop.ini
+.DS_Store
+._*
+
+# ─── Editor / IDE ──────────────────────────────
+.vscode/
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+
+# ─── Logs ───────────────────────────────────────
+*.log
+npm-debug.log*
+
+# ─── Build artifacts ───────────────────────────
+*.tgz
+*.zip
+
+# ─── Roblox local data (don't commit user plugins) ─
+*.rbxl
+*.rbxlx
+*.rbxm
+*.rbxmx
