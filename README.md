@@ -315,5 +315,4 @@ If this tool helped your Roblox development workflow, please consider giving it 
 <p align="center">
   Made with ❤️ for the Roblox developer community
 </p>
-#   r o b l o x - v s c o d e - b r i d g e  
- 
+#
